@@ -23,12 +23,12 @@ public class TransactionsController : ControllerBase
             var positionData = await _transactionRepo.GetPositions();
             if (positionData.ErrCode == ErrCode.OK)
             {
-                return Ok(positionData);
-                //if (positionData.Positions?.Count > 0)
-                //{
-                //    return Ok(positionData.Positions);
-                //}
-                //return NotFound("No Data Found!!!");
+                //return Ok(positionData);
+                if (positionData.Positions?.Count > 0)
+                {
+                    return Ok(positionData.Positions);
+                }
+                return NotFound("No Data Found!!!");
             }
             else
             {
