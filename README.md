@@ -1,8 +1,10 @@
 # TrafiguraTestBlazorApp
 
-IN The UI Part Save API Call was not completed from web app, also List items rendering was not completed, 
-Web API implementation completed
-Get and Save SQL Query correction based on test is pending, but due to time issue haven't tested properly.
+-SQL DB Scripts- DB scripts for table creation is completed
+-Web api for GetPositions and Save Transactions completed and available to test from Swagger
+-SQL Stor procedure, may be some changes needed after testing it from web UI(i.e due to time issue haven't tested properly.)
+-Web App: Transaction Add Form is completed, But Save data to API implementation is pending
 
-Attached ScreenShot in ScreenShot folder
+Attached ScreenShots of Swagger, DBData, UI in ScreenShots folder
 Attached DB Scripts in DBScript folder
+Attached API Test data in ScreenShots Folder
