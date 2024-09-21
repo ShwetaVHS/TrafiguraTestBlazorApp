@@ -1,0 +1,12 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/TrafiguraTestBlazorApp/.vs/TrafiguraTestBlazorApp
+/TrafiguraTestBlazorApp/TrafiguraTestWebApi/obj
+/TrafiguraTestBlazorApp/TrafiguraTestBlazorApp/bin/Debug/net8.0
+/TrafiguraTestBlazorApp/TrafiguraTestBlazorApp/obj
+/TrafiguraTestBlazorApp/TrafiguraTestModels/bin/Debug/net8.0
+/TrafiguraTestBlazorApp/TrafiguraTestModels/obj
+/TrafiguraTestBlazorApp/TrafiguraTestWebApi/bin/Debug/net8.0

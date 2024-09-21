@@ -1,0 +1,90 @@
+transaction1
+{
+  "transaction": {
+    "tradeID":1,
+    "securityCode": "REL",
+    "quantity": 50,
+    "submitAction": 1,
+    "isActive": true
+  },
+  "positions": [
+  ],
+  "errCode": 200
+}
+
+
+transaction2
+{
+  "transaction": {
+    "tradeID":2,
+    "securityCode": "ITC",
+    "quantity": 40,
+    "submitAction": 2,
+    "isActive": true
+  },
+  "positions": [
+  ],
+  "errCode": 200
+}
+
+
+transaction3
+{
+  "transaction": {
+    "tradeID":3,
+    "securityCode": "INF",
+    "quantity": 70,
+    "submitAction": 1,
+    "isActive": true
+  },
+  "positions": [
+  ],
+  "errCode": 200
+}
+
+
+transaction4
+{
+  "transaction": {
+    "tradeID":1,
+    "securityCode": "REL",
+    "quantity": 60,
+    "submitAction": 1,
+    "isActive": true
+  },
+  "positions": [
+  ],
+  "errCode": 200
+}
+
+
+transaction5
+{
+  "transaction": {
+    "tradeID":2,
+    "securityCode": "ITC",
+    "quantity": 30,
+    "submitAction": 1,
+    "isActive": false
+  },
+  "positions": [
+  ],
+  "errCode": 200
+}
+
+
+transaction6
+{
+  "transaction": {
+    "tradeID":4,
+    "securityCode": "INF",
+    "quantity": 20,
+    "submitAction": 2,
+    "isActive": true
+  },
+  "positions": [
+  ],
+  "errCode": 200
+}
+
+

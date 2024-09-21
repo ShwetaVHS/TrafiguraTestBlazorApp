@@ -1,0 +1,52 @@
+﻿@page "/"
+@page "/positions"
+@using System.Text.Json
+@using TrafiguraTestModels
+@inject IHttpClientFactory ClientFactory
+
+
+<PageTitle>Positions</PageTitle>
+
+<h1>Positions</h1>
+
+<p>This component demonstrates Positions Data.</p>
+
+@if (isLoaded == false)
+{
+    <p><em>Loading...</em></p>
+}
+else if (TransactionData.ErrCode == ErrCode.OK)
+{
+    if (TransactionData.Positions?.Count > 0)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>SecurityCode</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var p in TransactionData.Positions)
+                {
+                    <tr>
+                        <td>@p.SecurityCode</td>
+                        <td>@p.Quantity</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p><em>No Data Found</em></p>
+    }
+}
+else
+{
+    <p><em>Error While Retrieving Records</em></p>
+}
+
+<NavLink class="nav-link" href="transaction">
+    <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Add Transaction
+</NavLink>

@@ -1,0 +1,54 @@
+﻿
+@page "/transaction"
+
+@using TrafiguraTestModels
+<h3>transaction </h3>
+
+
+<EditForm Model="@transactionForm.Transaction" OnValidSubmit="OnSubmit">
+    <DataAnnotationsValidator />
+    
+    <div class="form-group mt-2">
+        <label>TradeID</label>
+        <input type="number"
+               class="form-control"
+               placeholder="Enter TradeID"
+               @bind-value="transactionForm.Transaction.TradeID" />
+        <ValidationMessage For="@(()=>transactionForm.Transaction.TradeID)" />
+    </div>
+
+    <div class="form-group mt-2">
+        <label>SecurityCode</label>
+        <input type="text"
+               class="form-control"
+               placeholder="Enter SecurityCode"
+               @bind-value="transactionForm.Transaction.SecurityCode" />
+        <ValidationMessage For="@(()=>transactionForm.Transaction.SecurityCode)" />
+    </div>
+
+    <div class="form-group mt-2">
+        <label>Quantity</label>
+        <input type="number"
+               class="form-control"
+               placeholder="Enter Quantity"
+               @bind-value="transactionForm.Transaction.Quantity" />
+        <ValidationMessage For="@(()=>transactionForm.Transaction.Quantity)" />
+    </div>
+
+    <div class="text-center mt-2">
+        <NavLink class="nav-link" href="positions">
+            <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> back to positions?
+        </NavLink>
+        <button type="submit" class="btn btn-primary">Save Transaction</button>   
+
+    </div>
+</EditForm>
+
+@code {
+    TransactionDTO transactionForm = new() { Transaction = new () };
+
+    private void OnSubmit()
+    {
+
+    }
+}

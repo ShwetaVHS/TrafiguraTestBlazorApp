@@ -1,0 +1,13 @@
+CREATE OR ALTER PROCEDURE dbo.usp_GetPositions
+	@errCode SMALLINT OUTPUT
+AS
+SET NOCOUNT ON
+SET @errCode = 200;
+BEGIN
+	BEGIN TRY 
+		SELECT *, 1 AS IsActive FROM dbo.tblTransactions;
+	END TRY
+	BEGIN CATCH
+		SET @errCode = 500;
+	END CATCH
+END
