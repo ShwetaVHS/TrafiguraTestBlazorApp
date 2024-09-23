@@ -18,27 +18,28 @@ public class TransactionsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetPositions()
     {
+        TransactionDTO positionData = null;
         try
         {
-            var positionData = await _transactionRepo.GetPositions();
+            positionData = await _transactionRepo.GetPositions();
             if (positionData.ErrCode == ErrCode.OK)
             {
+                if (positionData.Positions == null || positionData.Positions.Count < 1)
+                {
+                    positionData.ErrCode = ErrCode.NoDataFound;
+                }
                 return Ok(positionData);
-                //if (positionData.Positions?.Count > 0)
-                //{
-                //    return Ok(positionData.Positions);
-                //}
-                //return NotFound("No Data Found!!!");
             }
             else
             {
-                return StatusCode((int)positionData.ErrCode, "Error While Retrieving Records");
+                return StatusCode((int)positionData.ErrCode, GenericMothod.GetErrorMessage((int)positionData.ErrCode));
             }
         }
         catch (Exception ex)
         {
-            //log error
-            return StatusCode(500, ex.Message);
+            positionData ??= new TransactionDTO();
+            positionData.ErrCode = ErrCode.InternalServerError;
+            return StatusCode((int)positionData.ErrCode, ex.Message);
         }
     }
 
@@ -48,6 +49,15 @@ public class TransactionsController : ControllerBase
     {
         try
         {
+            if (transactionData.Transaction == null
+                || string.IsNullOrWhiteSpace(transactionData.Transaction.SecurityCode)
+                || transactionData.Transaction.TradeID < 1
+                || transactionData.Transaction.SubmitAction > 2
+                || transactionData.Transaction.SubmitAction < 1)
+            {
+                transactionData.ErrCode = ErrCode.InvalidData;
+                return StatusCode((int)transactionData.ErrCode, GenericMothod.GetErrorMessage((int)transactionData.ErrCode));
+            }
             await _transactionRepo.SaveTransaction(transactionData);
             if (transactionData.ErrCode == ErrCode.OK)
             {
@@ -55,13 +65,13 @@ public class TransactionsController : ControllerBase
             }
             else
             {
-                return StatusCode((int)transactionData.ErrCode, "Error While Saving Records");
+                return StatusCode((int)transactionData.ErrCode, GenericMothod.GetErrorMessage((int)transactionData.ErrCode));
             }
         }
         catch (Exception ex)
         {
-            //log error
-            return StatusCode(500, ex.Message);
+            transactionData.ErrCode = ErrCode.InternalServerError;
+            return StatusCode((int)transactionData.ErrCode, ex.Message);
         }
     }
 }

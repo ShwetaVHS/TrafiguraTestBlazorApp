@@ -15,7 +15,6 @@ BEGIN
 			@transactionID INT = 0,
 			@action VARCHAR(50);
 
-
 		SELECT TOP 1 @transactionID= TransactionID, @existingVersion = [Version], @existingQuantity = Quantity 
 		FROM dbo.tblTransactions 
 		WHERE SecurityCode = @securityCode
