@@ -57,6 +57,11 @@ BEGIN
 			INSERT INTO dbo.tblTransactions([Version], SecurityCode, Quantity, LastModifiedON)
 			VALUES(@existingVersion, @securityCode, @existingQuantity, GETUTCDATE());
 		END
+		ELSE
+		BEGIN 
+			SET @errCode = 591;
+			RETURN 
+		END
 
 		IF(@action = 'UPDATE' AND NOT EXISTS(SELECT 1 FROM dbo.tblTransactionHistory WHERE SecurityCode = @securityCode AND TradeID = @tradeID))
 		BEGIN
